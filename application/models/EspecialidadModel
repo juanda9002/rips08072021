@@ -1,0 +1,59 @@
+<?php
+
+class EspecialidadModel extends CI_model{
+
+	public function __construct(){
+
+		$this->load->database();
+	}
+
+
+	public function registrarEspecialidad($espe_cups, $espe_nombre){
+
+		return $this->db->insert("especialidad", ["espeCups" => $espe_cups, "espeNombre"]);		
+		
+	}
+
+	public function validarEspecialidad($espe_cups){
+
+		$consulta=$this->db->query("SELECT * FROM especialidad WHERE espeCups=$espe_cups");
+		return $consulta->result();
+	}
+
+
+
+	public function listarEspecialidad(){
+
+             //hacemos la consulta
+		$consulta=$this->db->query("SELECT * FROM especialidad");
+
+			 //Devolvemos el resultado de la consulta
+		return $consulta->result();
+	}
+
+
+
+	public function eliminarEspecialidad($id){
+		$consulta=$this->db->query("DELETE FROM especialidad WHERE espeId=$id");
+		if($consulta==true){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+
+	public function modificarEspecialidad($id){
+
+		$consulta=$this->db->query("SELECT * FROM especialidad WHERE espeId=$id");
+		return $consulta->result();
+	}
+
+
+	public function actualizarEspecialidad($id, $espe_nombre){
+
+		return $this->db->query("UPDATE especialidad SET espeNombre='$espe_nombre' WHERE usuId=$id"); //otra forma de retornar la consulta
+		
+	}
+
+}

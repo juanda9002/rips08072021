@@ -1,0 +1,18 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class EspecialidadControl extends CI_Controller {
+
+	
+
+	public function __construct(){ //cargar los valores por defecto
+		parent::__construct();
+		$this->load->model("EspecialiadModel"); //cargar datos al modelo		
+	}
+	
+	public function index(){
+	   $datos["titulo"] = 'RIDEC | Especialidades'; //Titulo de la pagina		
+	   $datos["listarDatos"]=$this->EspecialidadModel->listarEspecialidad(); //array asociativo con la llamada al metodo del modelo
+     
+	   $this->load->view('especialidad/index',$datos);  //cargo la vista y le paso los datos
+	}

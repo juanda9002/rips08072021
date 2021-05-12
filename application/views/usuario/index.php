@@ -15,24 +15,54 @@
        <div class="col-11 align-self-center">
 
         <nav class="navbar navbar-light " style="background-color: #56555B; height: 40px; padding: 5px">
+
+          <a href="<?=base_url()?>">Especialidad</a>
   <!-- Navbar content -->
        </nav>
-       <br>       
+       <br>     
+       <div> 
+      
+       <div>
+            <h4>  <?= $titulo ?></h4>
 
+          <?php if (isset($mensaje1)) { ?>
+           
+              <div class="alert alert-success" role="alert">
+              <?= $mensaje1 ?> 
+              </div>
+          
+            <?php } ?>
+
+            <?php if (isset($mensaje3)) { ?>
+           
+               <div class="alert alert-warning" role="alert">
+              <?= $mensaje3 ?> 
+              </div>
+          
+            <?php } ?>
+
+          <?php if (isset($mensajeUpdate)) { ?>
+               
+                  <div class="alert alert-success" role="alert">
+                  <?= $mensajeUpdate ?> 
+                  </div>
+              
+          <?php } ?>
+     
+      </div>
 
         <div class="row justify-content-between">
-          <div class="col-4 align-self-start">
-            <div style="float: left"> <h5>Usuario</h5> </div>
-            <div style="float: left"><a href="<?=base_url("UsuarioControl/vistaRegistrar")?>"><button type="button" class="btn btn-primary">Registrar</button></a><br></div>
-            
-          
+          <div class="col-4 align-self-start">            
+            <div style="float: left"><a href="<?=base_url("UsuarioControl/vistaRegistrar")?>"><button type="button" class="btn btn-primary">Registrar</button></a><br></div>        
+         
           </div>
+
 
         <div class="col-4">
           Buscar <input type="" name="">
         </div>
         </div>
-        <br>       
+        <br>      
 
         
         <table table class="table table-striped table-hover">  
@@ -44,7 +74,7 @@
             <th>ACCIONES</th>                
         </tr>        
 
-        <?php foreach($listard as $fila) { ?>
+        <?php foreach($listarDatos as $fila) { ?>
 
           <tr>
             <td style="width:50px"> <?php echo $fila->usuId;?> </td>
@@ -52,7 +82,7 @@
             <td style="width:50px"> <?php echo $fila->usuNombres;?> </td>
             <td style="width:50px"> <?php echo $fila->usuApellidos;?> </td>            
             <td style="width:10px">
-               <a href="<?=base_url("UsuarioControl/modifiUsuario/$fila->usuId")?>"><button type="button" class="btn btn-success">Editar</button> </a>   
+               <a href="<?=base_url("UsuarioControl/vistaModifiUsuario/$fila->usuId")?>"><button type="button" class="btn btn-success">Editar</button> </a>   
                <a href="<?=base_url("UsuarioControl/deleteUsuario/$fila->usuId")?>"><button type="button" class="btn btn-danger">Eliminar</button></span></a>                       
            </td>
          </tr>

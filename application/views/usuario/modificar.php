@@ -19,7 +19,9 @@
 
         <div class="row justify-content-between">
           <div class="col-4 align-self-start">
-            <div style="float: left"> <h5>Usuario modificar</h5> </div>    
+            <div style="float: left"> 
+              <h4>  <?= $titulo ?></h4>
+             </div>    
                       
           </div>
 
@@ -27,16 +29,20 @@
           Buscar <input type="" name="">
         </div>
         </div>
-        <br>      
+        <br>          
        
 
         <form action="<?php echo base_url();?>index.php/UsuarioControl/updateUsuario" method="POST">
 
-            <?php foreach ($mod as $fila){ ?>
+            <?php foreach ($modifica as $fila){ ?>
             <input class="form-control" type="" name="id" value="<?=$fila->usuId?>"/><br>
             <input class="form-control" type="text"  name="cedula" value="<?=$fila->usuCedula?>"/><br>
             <input class="form-control" type="text" name="nombres" value="<?=$fila->usuNombres?>"/><br>
             <input class="form-control" type="text" name="apellidos" value="<?=$fila->usuApellidos?>"/><br>
+
+            
+
+
             
             <button type="submit" class="btn btn-primary form-control">Aceptar</button>
 

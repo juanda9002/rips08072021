@@ -10,8 +10,20 @@ class UsuarioModel extends CI_model{
 
 	public function registrarUusario($cc, $nom, $ape){
 
-		return $this->db->insert("usuario", ["usuCedula" => $cc, "usuNombres" => $nom, "usuApellidos" => $ape]);
+		$sentencia= $this->db->insert("usuario", ["usuCedula" => $cc, "usuNombres" => $nom, "usuApellidos" => $ape]);
+
+		if ($sentencia) {
+			return true;
+		}
+		
 	}
+
+	public function validarRepetido($cedula){
+
+		$consulta=$this->db->query("SELECT * FROM usuario WHERE usuCedula=$cedula");
+		return $consulta->result();
+	}
+
 
 
 	public function listarUsuario(){
@@ -44,7 +56,8 @@ class UsuarioModel extends CI_model{
 
 	public function actualizarUsuario($id, $nombres){
 
-		return $this->db->query("UPDATE usuario SET usuNombres='$nombres' WHERE usuId=$id");
+		return $this->db->query("UPDATE usuario SET usuNombres='$nombres' WHERE usuId=$id"); //otra forma de retornar la consulta
+		
 	}
 
 }

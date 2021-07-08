@@ -8,9 +8,10 @@ class UsuarioModel extends CI_model{
 	}
 
 
-	public function registrarUusario($cc, $nom, $ape){
+	public function registrarUusario($cc, $nom, $ape, $tel, $log, $con, $rol){
 
-		$sentencia= $this->db->insert("usuario", ["usuCedula" => $cc, "usuNombres" => $nom, "usuApellidos" => $ape]);
+		$sentencia= $this->db->insert("usuario", ["usuCedula" => $cc, "usuNombres" => $nom, "usuApellidos" => $ape, "usuTelefono" => $tel,
+												 "usuLoggin" => $log, "usuContrasena" => $con, "idRol" => $rol]);
 
 		if ($sentencia) {
 			return true;
@@ -25,16 +26,14 @@ class UsuarioModel extends CI_model{
 	}
 
 
-
 	public function listarUsuario(){
 
              //hacemos la consulta
-		$consulta=$this->db->query("SELECT * FROM usuario");
+		$consulta=$this->db->query("SELECT * FROM usuario NATURAL JOIN rol 	ORDER BY usuApellidos ASC");
 
 			 //Devolvemos el resultado de la consulta
 		return $consulta->result();
 	}
-
 
 
 	public function eliminarUsuario($id){
@@ -54,9 +53,9 @@ class UsuarioModel extends CI_model{
 	}
 
 
-	public function actualizarUsuario($id, $nombres){
+	public function actualizarUsuario($id, $nom, $ape, $tel, $rol){
 
-		return $this->db->query("UPDATE usuario SET usuNombres='$nombres' WHERE usuId=$id"); //otra forma de retornar la consulta
+		return $this->db->query("UPDATE usuario SET usuNombres='$nom', usuApellidos='$ape', usuTelefono='$tel', idRol='$rol' WHERE usuId=$id"); //otra forma de retornar la consulta
 		
 	}
 

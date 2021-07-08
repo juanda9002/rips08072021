@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://192.2.91.30/codenigter3/';
+$config['base_url'] = 'http://localhost/rips/';
 
 /*
 |--------------------------------------------------------------------------
